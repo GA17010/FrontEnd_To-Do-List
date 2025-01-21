@@ -1,0 +1,104 @@
+.list_item {
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  border: 1px solid var(--gray-alpha-200);
+  border-radius: 4px;
+  padding: 10px;
+  transition: all 0.2s ease-in-out;
+  width: 300px;
+}
+
+.list_item:hover,
+.list_item:focus {
+  background-color: var(--gray-alpha-100);
+}
+
+.list_checkbox {
+  scale: 1.5;
+  border: 1px solid var(--gray-alpha-200);
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.list_content {
+  display: flex;
+  place-items: center;
+  flex-direction: row;
+  cursor: default;
+  gap: 8px;
+  width: 100%;
+}
+
+.list_text {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--foreground);
+  word-break: break-word; /* Allowing long words to break */
+  overflow-wrap: break-word;
+}
+
+.list_button_delete {
+  padding: 4px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.bin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+
+.bin_button {
+  gap: 8px;
+  height: 30px;
+  margin: 5px;
+  padding-inline: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  cursor: pointer;
+  transition-duration: 0.3s;
+  background-color: var(--gray-alpha-200);
+}
+
+.bin_top_line,
+.bin_bottom_line {
+  stroke: var(--foreground);
+}
+
+.bin_bottom_path {
+  fill: var(--foreground);
+}
+
+.bin_icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bin_bottom {
+  width: 10px;
+}
+.bin_top {
+  width: 12px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+}
+.bin_button:hover .bin_top {
+  transform: rotate(45deg);
+}
+.bin_button:hover {
+  background-color: rgb(255, 0, 0);
+}
+.bin_button:active {
+  transform: scale(0.9);
+}

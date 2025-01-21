@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-inline: 40px;
+    background-color: var(--background);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header__logo, .header__logo__icon {
+    font-weight: 700;
+    color: #333;
+    cursor: pointer;
+}
+
+
+@media (prefers-color-scheme: dark) {
+    .header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+    }
+
+    .header__logo__icon {
+      filter: invert();
+    }
+  }

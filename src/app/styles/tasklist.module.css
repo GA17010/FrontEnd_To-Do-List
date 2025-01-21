@@ -1,0 +1,19 @@
+.list_container {
+  flex-grow: 1;
+  display: flex;
+  position: relative;
+}
+
+.list {
+  display: flex;
+  flex-direction: row;
+  place-content: center;
+  gap: 16px;
+  margin: 16px;
+  flex-wrap: wrap;
+}
+
+.list_title {
+  font-size: 24px;
+  font-weight: 700;
+}
