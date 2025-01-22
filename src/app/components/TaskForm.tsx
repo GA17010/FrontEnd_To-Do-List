@@ -30,6 +30,7 @@ export default function TaskForm({ onAddTask }: TaskFormProps) {
         value={name}
         className={styles.form_input}
         onChange={handleChange}
+        maxLength={100}
       />
       <button type="submit" className={styles.form_button}>
         Agregar
