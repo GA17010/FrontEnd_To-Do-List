@@ -56,6 +56,13 @@
   line-height: 1.2;
 }
 
+
+.list_title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
 .footer {
   grid-row-start: 3;
   display: flex;

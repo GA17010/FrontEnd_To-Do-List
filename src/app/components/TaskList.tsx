@@ -10,16 +10,14 @@ interface Task {
 export default function TaskList({
   listTasks,
   onDeleteTask,
-  onToggleComplete
+  onToggleComplete,
 }: {
   listTasks: Task[];
   onDeleteTask: (id: number) => void;
   onToggleComplete: (id: number, done: boolean) => void;
 }) {
-
   return (
     <>
-      <span className={styles.list_title}>Tareas:</span>
       <div className={styles.list_container}>
         <div className={styles.list}>
           {listTasks.map((task) => (

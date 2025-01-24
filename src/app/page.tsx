@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Header from "./Header/page";
-import TaskList from "./components/TaskList";
 import TaskForm from "./components/TaskForm";
 import { addTask, fetchTasks, deleteTask, updateTask } from "./utils/api";
+import { lazy } from "react";
+const TaskList = lazy(() => import("./components/TaskList"));
 
 interface Task {
   id: number;
@@ -117,7 +118,11 @@ export default function Home() {
         <p className={styles.description}>
           Organiza tus tareas de forma sencilla y rápida.
         </p>
+
         <TaskForm onAddTask={handleAddTask} />
+
+        <span className={styles.list_title}>Tareas:</span>
+
         <TaskList
           listTasks={tasks}
           onDeleteTask={handleDeleteTask}
