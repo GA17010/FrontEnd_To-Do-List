@@ -62,6 +62,14 @@
   font-weight: 700;
 }
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-size: 24px;
+  color: #333;
+}
 
 .footer {
   grid-row-start: 3;

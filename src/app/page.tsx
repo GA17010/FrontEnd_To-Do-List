@@ -16,24 +16,22 @@ interface Task {
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Fetch tasks on load
   useEffect(() => {
-    // Fetch tasks from localStorage if available
-    if (localStorage.getItem("tasks")) {
-      setTasks(JSON.parse(localStorage.getItem("tasks") || ""));
-    }
+    const loadTasks = async () => {
+      try {
+        const tasks = await fetchTasks();
+        setTasks(tasks);
+      } catch (error) {
+        console.error("Failed to fetch tasks:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-    // Fetch tasks from API
-    fetchTasks().then((tasks) => {
-      const newTasks = tasks.map((task) => ({
-        id: task.id,
-        name: task.name,
-        done: task.done,
-      }));
-      setTasks(newTasks);
-      localStorage.setItem("tasks", JSON.stringify(newTasks));
-    });
+    loadTasks();
   }, []);
 
   // Add task
@@ -91,11 +89,10 @@ export default function Home() {
     );
 
     try {
-      await updateTask({
-        id,
-        name: tasks.find((task) => task.id === id)?.name || "",
-        done,
-      });
+      const taskToUpdate = tasks.find((task) => task.id === id);
+      if (taskToUpdate) {
+        await updateTask({ ...taskToUpdate, done });
+      }
     } catch (error) {
       console.error("Failed to update task:", error);
       // Revert UI changes
@@ -123,6 +120,8 @@ export default function Home() {
 
         <span className={styles.list_title}>Tareas:</span>
 
+        {loading && <div className={styles.spinner}>Cargando tareas...</div>}
+
         <TaskList
           listTasks={tasks}
           onDeleteTask={handleDeleteTask}
@@ -137,7 +136,7 @@ export default function Home() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            @devgustavo17
+            @devgustavo
           </a>
         </span>
       </footer>
