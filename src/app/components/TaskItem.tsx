@@ -31,13 +31,14 @@ export default function TaskItem({ task, onDelete, onToggleComplete }: TaskItemP
     <div key={task.id} className={styles.list_item}>
       <div className={styles.list_content}>
       <input
-        name={task.id.toString()}
+        id={`task-${task.id}`}
+        name={String(task.id)}
         type="checkbox"
         onChange={handleToggleComplete}
         className={styles.list_checkbox}
         checked={task.done}
       />
-        <label id={task.id.toString()} className={styles.list_text}>
+        <label htmlFor={`task-${task.id}`} className={styles.list_text}>
           {task.name}
         </label>
       </div>
