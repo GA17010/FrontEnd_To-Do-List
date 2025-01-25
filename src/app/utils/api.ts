@@ -16,7 +16,7 @@ export const fetchTasks = async (): Promise<Task[]> => {
 };
 
 export const addTask = async (task: Task): Promise<Task> => {
-  const response = await fetch("https://to-do-list-59r7.onrender.com/api/tasks/add/", {
+  const response = await fetch("https://to-do-list-59r7.onrender.com/api/tasks/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name: task.name, done: task.done }),
@@ -25,13 +25,13 @@ export const addTask = async (task: Task): Promise<Task> => {
 };
 
 export const deleteTask = async (id: number): Promise<void> => {
-  await fetch(`https://to-do-list-59r7.onrender.com/api/tasks/delete/${id}/`, {
+  await fetch(`https://to-do-list-59r7.onrender.com/api/tasks/${id}/`, {
     method: "DELETE",
   });
 };
 
 export const updateTask = async (task: Task): Promise<Task> => {
-  const response = await fetch(`https://to-do-list-59r7.onrender.com/api/tasks/update/${task.id}/`, {
+  const response = await fetch(`https://to-do-list-59r7.onrender.com/api/tasks/${task.id}/`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name: task.name, done: task.done }),
