@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://to-do-list-59r7.onrender.com/api/tasks/*', // Cambia esto por la URL de tu backend
+        destination: `${process.env.REACT_APP_API_URL}/api/:path*`, // Cambia esto por la URL de tu backend
       },
     ];
   },
