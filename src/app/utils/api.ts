@@ -6,7 +6,7 @@ export interface Task {
 
 export const fetchTasks = async (): Promise<Task[]> => {
   try {
-    const response = await fetch("https://to-do-list-59r7.onrender.com/api/tasks");
+    const response = await fetch("https://to-do-list-59r7.onrender.com/api/tasks/");
     return response.json();
   }
   catch (error) {
