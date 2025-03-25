@@ -6,35 +6,39 @@ export interface Task {
 
 export const fetchTasks = async (): Promise<Task[]> => {
   try {
-    const response = await fetch("https://to-do-list-59r7.onrender.com/api/tasks/");
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/tasks/`
+    );
     return response.json();
-  }
-  catch (error) {
+  } catch (error) {
     console.error("Error fetching tasks", error);
     return [];
   }
 };
 
 export const addTask = async (task: Task): Promise<Task> => {
-  const response = await fetch("https://to-do-list-59r7.onrender.com/api/tasks/", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name: task.name, done: task.done }),
-  });
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/tasks/`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: task.name, done: task.done }),
+    }
+  );
   return response.json();
 };
 
 export const deleteTask = async (id: number): Promise<void> => {
-  await fetch(`https://to-do-list-59r7.onrender.com/api/tasks/${id}/`, {
+  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks/${id}/`, {
     method: "DELETE",
   });
 };
 
 export const updateTask = async (task: Task): Promise<Task> => {
-  const response = await fetch(`https://to-do-list-59r7.onrender.com/api/tasks/${task.id}/`, {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks/${task.id}/`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ name: task.name, done: task.done }),
   });
   return response.json();
-}
+};
